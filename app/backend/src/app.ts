@@ -1,5 +1,5 @@
 import * as express from 'express';
-import TeamRoutes from './router/Team.routes';
+import teamRouter from './router/Team.routes';
 
 class App {
   public app: express.Express;
@@ -23,7 +23,8 @@ class App {
 
     this.app.use(express.json());
     this.app.use(accessControl);
-    this.app.use('/teams', TeamRoutes);
+
+    this.app.use('/teams', teamRouter);
   }
 
   public start(PORT: string | number):void {
