@@ -31,21 +31,21 @@ describe('GET teams', ()=>{
     expect(status).to.be.equal(200);
     expect(body).to.be.deep.equal(getAllTeams);
   })
-  // it('Deve retornar um time',async () => {
-  //   sinon.stub(TeamModel, 'findByPk').resolves( getOneTeam as TeamModel);
+  it('Deve retornar um time',async () => {
+    sinon.stub(TeamModel, 'findByPk').resolves( getOneTeam as TeamModel);
 
-  //   const {status, body}= await
-  //   chai.request(app).get('/teams/1')
-  //   expect(status).to.be.equal(200);
-  //   expect(body).to.be.deep.equal(getOneTeam);
-  // });
+    const {status, body}= await
+    chai.request(app).get('/teams/1')
+    expect(status).to.be.equal(200);
+    expect(body).to.be.deep.equal(getOneTeam);
+  });
 
-  // it('Deve retornar um erro se não encontrar um time',async () => {
-  //   sinon.stub(TeamModel, 'findByPk').resolves();
+  it('Deve retornar um erro se não encontrar um time',async () => {
+    sinon.stub(TeamModel, 'findByPk').resolves();
 
-  //   expect(TeamService.getById(1)).to.be.deep.equal('Não existe time com este id');
+    expect(TeamService.getById(1)).to.be.deep.equal('Não existe time com este id');
    
-  // });
+  });
 })
   
 });
