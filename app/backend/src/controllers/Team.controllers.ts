@@ -6,4 +6,11 @@ export default class TeamController {
     const allTeams = await TeamService.getAll();
     res.status(200).json(allTeams);
   }
+
+  public static async getById(req: Request, res:Response) {
+    const { id } = req.params;
+
+    const getId = await TeamService.getById(+id);
+    res.status(200).json(getId);
+  }
 }
