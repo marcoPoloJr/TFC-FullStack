@@ -1,4 +1,4 @@
-import {compare} from 'bcryptjs'
+import { compare } from 'bcryptjs';
 import { generateToken } from '../utils/Auth';
 import UserModel from '../database/models/User.model';
 import ValidateError from '../utils/ValidateError';
@@ -17,17 +17,18 @@ export default class UserService {
     }
     const comparePassword = await compare(password, userEmail.password);
 
-    if(!comparePassword) {
-        throw new ValidateError('Invalid email or pahrssword')
+    if (!comparePassword) {
+      throw new ValidateError('Invalid email or pahrssword');
     }
     return generateToken(userEmail.id);
   }
-  public static async getByRole(id: number){
-    const user = await UserModel.findOne({where: {id}});
+
+  public static async getByRole(id: number) {
+    const user = await UserModel.findOne({ where: { id } });
 
     if (!user) {
-        throw new ValidateError('Token must be a valid token');
-            }
-  return user.role
-        }
+      throw new ValidateError('Token must be a valid token');
+    }
+    return user.role;
+  }
 }
