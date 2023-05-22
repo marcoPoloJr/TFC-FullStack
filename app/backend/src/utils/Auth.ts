@@ -1,6 +1,9 @@
 import { sign, verify } from 'jsonwebtoken';
+import * as jwt from 'jsonwebtoken';
 
-const secretKey = process.env.JWT_SECRET as string;
+const secretKey = process.env.JWT_SECRET || 'secret'   as string;
+
+
 
 interface IToken {
   id: number,
@@ -19,6 +22,8 @@ const generateToken = (id:number) => {
       algorithm: 'HS256',
     },
   );
+  console.log('AuTH TOKEN', token);
+  
   return token;
 };
 

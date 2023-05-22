@@ -11,14 +11,15 @@ export type LoginUser = {
 export default class UserService {
   public static async login({ email, password }:LoginUser):Promise<string> {
     const userEmail = await UserModel.findOne({ where: { email } });
+    console.log('TESTE', userEmail?.email);
 
     if (!userEmail) {
-      throw new ValidateError('Invalid email or pahrssword');
+      throw new ValidateError('Invalid email or password');
     }
     const comparePassword = await compare(password, userEmail.password);
 
     if (!comparePassword) {
-      throw new ValidateError('Invalid email or pahrssword');
+      throw new ValidateError('Invalid email or password');
     }
     return generateToken(userEmail.id);
   }
