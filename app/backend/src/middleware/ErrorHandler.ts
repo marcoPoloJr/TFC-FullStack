@@ -19,6 +19,6 @@ export default class ErrorHandler {
       return res.status(422).json({ message: error.message });
     }
     console.error(error);
-    res.status(500).end()
+    res.status(500).end();
   }
 }
