@@ -19,7 +19,6 @@ const generateToken = (id:number) => {
       algorithm: 'HS256',
     },
   );
-  console.log('AuTH TOKEN', token);
 
   return token;
 };

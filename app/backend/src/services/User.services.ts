@@ -9,17 +9,22 @@ export type LoginUser = {
 };
 
 export default class UserService {
-  public static async login({ email, password }:LoginUser):Promise<string> {
+  public static async login({ email, password }:LoginUser):Promise<string | undefined> {
     const userEmail = await UserModel.findOne({ where: { email } });
-    console.log('TESTE', userEmail?.email);
+    // const comparePassword = await compare(password, userEmail.password);
+    // console.log('TESTE', userEmail);
+
+    // if (userEmail && comparePassword) {
+    //   return generateToken(userEmail.id);
+    // }
 
     if (!userEmail) {
-      throw new ValidateError('Invalid email or password');
+      throw new ValidateError('Invalid email');
     }
     const comparePassword = await compare(password, userEmail.password);
 
     if (!comparePassword) {
-      throw new ValidateError('Invalid email or password');
+      throw new ValidateError('Invalid password');
     }
     return generateToken(userEmail.id);
   }
