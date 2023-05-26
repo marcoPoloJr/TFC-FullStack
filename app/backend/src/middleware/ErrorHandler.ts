@@ -5,7 +5,7 @@ import BadRequest from '../utils/BadRequest';
 import NonProcessableEntity from '../utils/NonProcessableEntity';
 
 export default class ErrorHandler {
-  static handlerError(error:Error, req: Request, res: Response, _next:NextFunction) {
+  static handlerError(error:Error, _req: Request, res: Response, _next:NextFunction) {
     if (error instanceof ValidateError) {
       return res.status(401).json({ message: error.message });
     }

@@ -30,6 +30,7 @@ class App {
     this.app.use('/teams', teamRouter);
     this.app.use('/login', userRouter);
     this.app.use('/matches', matchRouter);
+
     this.app.use(ErrorHandler.handlerError);
   }
 
