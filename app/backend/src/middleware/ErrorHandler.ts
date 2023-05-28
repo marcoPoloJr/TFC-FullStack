@@ -18,7 +18,7 @@ export default class ErrorHandler {
     if (error instanceof NonProcessableEntity) {
       return res.status(422).json({ message: error.message });
     }
-    console.error(error);
-    res.status(500).end();
+    console.error('ERRO MIDDLE', error);
+   return res.status(500).end();
   }
 }

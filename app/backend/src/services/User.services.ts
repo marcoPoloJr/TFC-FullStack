@@ -7,16 +7,17 @@ export type LoginUser = {
   email: string,
   password: string,
 };
-const error401 = 'Invalid email or password';
+
 export default class UserService {
   public static async login({ email, password }:LoginUser):Promise<string | undefined> {
     const userEmail = await UserModel.findOne({ where: { email } });
 
-    if (!userEmail) throw new ValidateError(error401);
+    if (!userEmail) throw new ValidateError('Invalid email or password');
 
     const comparePassword = await compare(password, userEmail.password);
 
     if (!comparePassword) throw new ValidateError('Invalid email or password');
+
     return generateToken(userEmail.id);
   }
 

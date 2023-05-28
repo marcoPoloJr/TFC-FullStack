@@ -1,7 +1,7 @@
 import { LoginUser } from '../services/User.services';
 import ValidateError from './ValidateError';
 
-const UserValid = ({ email, password }: LoginUser): void => {
+const UserValid = ({ email, password }: LoginUser):void => {
   const regex = /^[\w+.]+@\w+\.\w{2,}(?:\.\w{2})?$/;
   const userEmail = regex.test(email);
   const userPassword = password.length > 5;
@@ -10,5 +10,4 @@ const UserValid = ({ email, password }: LoginUser): void => {
     throw new ValidateError('Invalid email or password');
   }
 };
-
 export default UserValid;

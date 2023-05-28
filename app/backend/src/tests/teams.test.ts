@@ -43,7 +43,7 @@ describe('GET teams', ()=>{
   it('Deve retornar um erro se não encontrar um time',async () => {
     sinon.stub(TeamModel, 'findByPk').resolves();
 
-    expect(TeamService.getById(1)).to.be.deep.equal('Não existe time com este id');
+    expect(TeamService.getById(1)).to.be.deep.equal('There is no team with this ID!');
    
   });
 })

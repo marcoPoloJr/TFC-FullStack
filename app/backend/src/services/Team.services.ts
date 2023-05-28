@@ -1,4 +1,4 @@
-import NotFoundError from '../utils/NotFoundError';
+// import NotFoundError from '../utils/NotFoundError';
 import TeamModel from '../database/models/Team.model';
 import { Team } from '../interfaces';
 
@@ -7,10 +7,13 @@ export default class TeamService {
     return TeamModel.findAll();
   }
 
-  public static async getById(id:number): Promise<Team> {
-    const getId = await TeamModel.findByPk(id);
+  public static async getById(id:number): Promise<Team | null> {
+    return TeamModel.findByPk(id);
+    // const getId = await TeamModel.findByPk(id);
 
-    if (!getId) throw new NotFoundError('There is no team with this ID!');
-    return getId;
+    // // console.log('TEST', );
+
+    // // if (!getId) throw new NotFoundError('There is no team with this ID!');
+    // return getId;
   }
 }

@@ -21,8 +21,8 @@ describe('POST user',()=>{
     it('Deve retornar um token',async () => {
         Sinon.stub(UserService, 'login').resolves('token');
         chaiHttpResponse = await chai.request(app).post('/login').send(({
-            email:'test@test.com',
-            password:'123456',
+            email:'user@user.com',
+            password:'secret_user',
         }));
         expect(chaiHttpResponse.status).to.be.equal(200);
         expect(chaiHttpResponse.body).to.be.deep.equal({token:'token'})

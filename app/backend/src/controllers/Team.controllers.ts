@@ -10,7 +10,7 @@ export default class TeamController {
   public static async getById(req: Request, res:Response) {
     const { id } = req.params;
 
-    const getId = await TeamService.getById(+id);
+    const getId = await TeamService.getById(Number(id));
     res.status(200).json(getId);
   }
 }
