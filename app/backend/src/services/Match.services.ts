@@ -22,4 +22,10 @@ export default class MatchService {
     }
     return allMatches;
   }
+
+  public static async finishMatch(id:number) {
+    const mathcId = await MatchModel.findByPk(id);
+    const matchFinish = await mathcId?.update({ inProgress: false }, { where: { id } });
+    return matchFinish;
+  }
 }
