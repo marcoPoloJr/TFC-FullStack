@@ -2,7 +2,6 @@
 import { generateToken } from '../utils/Auth';
 import UserModel from '../database/models/User.model';
 
-
 export type LoginUser = {
   email: string,
   password: string,
@@ -23,6 +22,6 @@ export default class UserService {
   public static async getByRole(id: number) {
     const user = await UserModel.findOne({ where: { id } });
 
-       return user.role;
+    return user?.role;
   }
 }

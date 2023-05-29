@@ -10,8 +10,6 @@ const verifyToken = (req: Request, res: Response, next: NextFunction) => {
 
   const verify = validateToken(token);
 
-  console.log('VERIFYTOKEN', verify);
-
   if (verify.message) {
     return res.status(401).json({ message: verify.message });
   }

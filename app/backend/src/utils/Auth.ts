@@ -7,7 +7,7 @@ interface IToken {
   message?: string,
 }
 
-const generateToken = (email:string) => {
+const generateToken = (email:string | unknown) => {
   const data = {
     email,
   };
