@@ -1,5 +1,5 @@
 import * as express from 'express';
-import ErrorHandler from './middleware/ErrorHandler';
+// import ErrorHandler from './middleware/ErrorHandler';
 import matchRouter from './router/Match.routes';
 import teamRouter from './router/Team.routes';
 import userRouter from './router/User.routes';
