@@ -3,7 +3,7 @@ import { decodeToken } from '../utils/Auth';
 import UserService from '../services/User.services';
 
 export default class UserController {
-  public static async login(req: Request, res: Response) {
+  public static async login(req: Request, res: Response):Promise<Response | void> {
     const token = await UserService.login(req.body);
     res.status(200).json({ token });
   }

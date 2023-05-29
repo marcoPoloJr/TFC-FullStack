@@ -7,9 +7,9 @@ interface IToken {
   message?: string,
 }
 
-const generateToken = (id:number) => {
+const generateToken = (email:string) => {
   const data = {
-    id,
+    email,
   };
   const token = sign(
     data,

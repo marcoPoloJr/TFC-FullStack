@@ -1,18 +1,19 @@
 import { NextFunction, Request, Response } from 'express';
-import ValidateError from '../utils/ValidateError';
 import { validateToken } from '../utils/Auth';
 
-const verifyToken = (req: Request, _res: Response, next: NextFunction) => {
+const verifyToken = (req: Request, res: Response, next: NextFunction) => {
   const token = req.headers.authorization;
 
   if (!token) {
-    throw new ValidateError('Token not found');
+    return res.status(401).json({ message: 'Token not found' });
   }
 
   const verify = validateToken(token);
 
+  console.log('VERIFYTOKEN', verify);
+
   if (verify.message) {
-    throw new ValidateError(verify.message);
+    return res.status(401).json({ message: verify.message });
   }
 
   next();
