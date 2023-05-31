@@ -1,5 +1,4 @@
 import { Request, Response } from 'express';
-import { decodeToken } from '../utils/Auth';
 import UserService from '../services/User.services';
 
 export default class UserController {
@@ -10,9 +9,7 @@ export default class UserController {
 
   public static async getByRole(req: Request, res: Response) {
     const token = req.headers.authorization as string;
-    const decode = decodeToken(token);
-    const { id } = decode;
-    const role = await UserService.getByRole(id);
+    const role = await UserService.getByRole(token);
     res.status(200).json({ role });
   }
 }

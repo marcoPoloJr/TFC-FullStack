@@ -1,23 +1,21 @@
-import { sign, verify } from 'jsonwebtoken';
+import { sign, verify, decode, JwtPayload, SignOptions } from 'jsonwebtoken';
 
 const secretKey = process.env.JWT_SECRET || 'secret' as string;
+const jwtConfig: SignOptions = {
+  expiresIn: '100d',
+  algorithm: 'HS256',
+};
 
 interface IToken {
-  id: number,
+  email: string,
   message?: string,
 }
 
-const generateToken = (email:string | unknown) => {
-  const data = {
-    email,
-  };
+export const generateToken = (email:string | undefined) => {
   const token = sign(
-    data,
+    { data: { email } },
     secretKey,
-    {
-      expiresIn: '100d',
-      algorithm: 'HS256',
-    },
+    jwtConfig,
   );
 
   return token;
@@ -28,16 +26,26 @@ const validateToken = (token:string):IToken => {
     const isValid = verify(token, secretKey);
     return isValid as IToken;
   } catch (err) {
-    return { message: 'Token must be a valid token', id: 0 };
+    return { message: 'Token must be a valid token', email: 'a' };
   }
 };
+const decodeToken = (token: string) => {
+  const result = decode(token) as JwtPayload;
+  console.log('AUTH', result);
 
-const decodeToken = (token:string):IToken => {
-  const decode = verify(token, secretKey);
-  return decode as IToken;
+  const { email } = result.data;
+
+  return email;
 };
+//   const decodeToken = (token:string):IToken => {
+//   const decode = verify(token, secretKey);
+//   console.log('AUTH_DECODE', decode);
+
+//   return decode as IToken;
+// }
+
 export {
-  generateToken,
+  // generateToken,
   validateToken,
   decodeToken,
 };
