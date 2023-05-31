@@ -13,4 +13,23 @@ export default class MartchController {
     await MatchService.finishMatch(Number(id));
     res.status(200).json({ message: 'Finished' });
   }
+
+  public static async upDateMatch(req: Request, res:Response) {
+    const { id } = req.params;
+    const { homeTeamGoals, awayTeamGoals } = req.body;
+    const update = await MatchService.upDateMatch(Number(id), homeTeamGoals, awayTeamGoals);
+    res.status(200).json(update);
+  }
+
+  public static async createMatch(req:Request, res:Response) {
+    const { homeTeamId, homeTeamGoals, awayTeamId, awayTeamGoals } = req.body;
+
+    const createMatch = await MatchService.creatMatch(
+      homeTeamId,
+      homeTeamGoals,
+      awayTeamId,
+      awayTeamGoals,
+    );
+    res.status(200).json(createMatch);
+  }
 }
