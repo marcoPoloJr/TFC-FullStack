@@ -5,6 +5,7 @@ import chaiHttp = require('chai-http');
 import {Response} from 'superagent';
 import UserService from '../services/User.services';
 import { app } from '../app';
+import * as jwt from '../utils/Auth';
 
 chai.use(chaiHttp);
 
@@ -40,4 +41,18 @@ describe('POST user',()=>{
             password:'123456',
     })
     expect(chaiHttpResponse.status).to.be.equal(401);
-    })})
+    })
+    it('GET /login/role deve retornar um token', async () => {
+        Sinon.stub(jwt, 'validateToken').returns({id: 1});
+
+        Sinon.stub(UserService, 'getByRole').resolves('admin');
+
+        chaiHttpResponse = await chai.request(app)
+        .get('/login/role')
+        .set('Authorization', 'token');
+
+        expect(chaiHttpResponse.status).to.be.equal(200);
+        expect(chaiHttpResponse.body).to.be.deep.equal({role: 'admin'});
+      })
+
+})
