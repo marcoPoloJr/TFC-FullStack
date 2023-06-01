@@ -15,21 +15,17 @@ export default class Generate {
   public static generateRowsHome(allMatches:Match[], { id, teamName }:Team) {
     const teamMatchesHome = allMatches.filter((mat) => mat.homeTeamId === id);
 
-    console.log('GENARATEROWSHOME',teamMatchesHome);
-    
-    
+    console.log('GENARATEROWSHOME', teamMatchesHome);
+
     return Calculate.teamStatus(teamName, teamMatchesHome);
   }
 
   public static generateRowsAway(allMatches:Match[], { id, teamName }:Team) {
     const teamMatchesAway = allMatches.filter((mat) => mat.awayTeamId === id);
-   console.log('GENARATEROWSAWAY',teamMatchesAway);
-    
+    console.log('GENARATEROWSAWAY', teamMatchesAway);
+
     return Calculate.teamStatus(teamName, teamMatchesAway);
   }
-
-
-
 
   public static sortRows(leaderboard:TeamInfo[]) {
     return leaderboard.sort((home, away) =>
