@@ -31,7 +31,7 @@ const validateToken = (token:string):IToken => {
 };
 const decodeToken = (token: string) => {
   const result = decode(token) as JwtPayload;
-  console.log('AUTH', result);
+  // console.log('AUTH', result);
 
   const { email } = result.data;
 

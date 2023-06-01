@@ -30,6 +30,6 @@ export default class MartchController {
       awayTeamId,
       awayTeamGoals,
     );
-    res.status(200).json(createMatch);
+    res.status(201).json(createMatch);
   }
 }
