@@ -43,7 +43,7 @@ describe('POST user',()=>{
     expect(chaiHttpResponse.status).to.be.equal(401);
     })
     it('GET /login/role deve retornar um token', async () => {
-        Sinon.stub(jwt, 'validateToken').returns({id: 1});
+        Sinon.stub(jwt, 'validateToken').returns({email: 'admin@admin.com'});
 
         Sinon.stub(UserService, 'getByRole').resolves('admin');
 
@@ -54,5 +54,7 @@ describe('POST user',()=>{
         expect(chaiHttpResponse.status).to.be.equal(200);
         expect(chaiHttpResponse.body).to.be.deep.equal({role: 'admin'});
       })
+
+      
 
 })

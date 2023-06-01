@@ -2,15 +2,34 @@ import { Match, Team, TeamInfo } from '../interfaces';
 import Calculate from './Calculate.leaderboard';
 
 export default class Generate {
-  public static generateLeaderboard(allMatches:Match[], allTeams:Team[]) {
-    const leaderboard = allTeams.map((team) => this.generateRows(allMatches, team));
+  public static generateLeaderboardHome(allMatches:Match[], allTeams:Team[]) {
+    const leaderboard = allTeams.map((team) => this.generateRowsHome(allMatches, team));
     return this.sortRows(leaderboard);
   }
 
-  public static generateRows(allMatches:Match[], { id, teamName }:Team) {
-    const teamMatches = allMatches.filter((mat) => mat.homeTeamId === id);
-    return Calculate.teamStatus(teamName, teamMatches);
+  public static generateLeaderboardAway(allMatches:Match[], allTeams:Team[]) {
+    const leaderboard = allTeams.map((team) => this.generateRowsAway(allMatches, team));
+    return this.sortRows(leaderboard);
   }
+
+  public static generateRowsHome(allMatches:Match[], { id, teamName }:Team) {
+    const teamMatchesHome = allMatches.filter((mat) => mat.homeTeamId === id);
+
+    console.log('GENARATEROWSHOME',teamMatchesHome);
+    
+    
+    return Calculate.teamStatus(teamName, teamMatchesHome);
+  }
+
+  public static generateRowsAway(allMatches:Match[], { id, teamName }:Team) {
+    const teamMatchesAway = allMatches.filter((mat) => mat.awayTeamId === id);
+   console.log('GENARATEROWSAWAY',teamMatchesAway);
+    
+    return Calculate.teamStatus(teamName, teamMatchesAway);
+  }
+
+
+
 
   public static sortRows(leaderboard:TeamInfo[]) {
     return leaderboard.sort((home, away) =>

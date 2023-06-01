@@ -7,6 +7,12 @@ export default class LeaderboardService {
   public static async getHomeLeaderboard():Promise<TeamInfo[]> {
     const matches = await MatchModel.findAll({ where: { inProgress: false } });
     const teams = await TeamModel.findAll();
-    return Generate.generateLeaderboard(matches, teams);
+    return Generate.generateLeaderboardHome(matches, teams);
+  }
+
+  public static async getAwayLeaderboard():Promise<TeamInfo[]> {
+    const matches = await MatchModel.findAll({ where: { inProgress: false } });
+    const teams = await TeamModel.findAll();
+    return Generate.generateLeaderboardAway(matches, teams);
   }
 }
