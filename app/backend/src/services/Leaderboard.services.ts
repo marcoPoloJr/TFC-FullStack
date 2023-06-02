@@ -15,4 +15,10 @@ export default class LeaderboardService {
     const teams = await TeamModel.findAll();
     return Generate.generateLeaderboardAway(matches, teams);
   }
+
+  public static async getFullLeaderboard():Promise<TeamInfo[]> {
+    const matches = await MatchModel.findAll({ where: { inProgress: false } });
+    const teams = await TeamModel.findAll();
+    return Generate.generateLeaderboardFull(matches, teams);
+  }
 }

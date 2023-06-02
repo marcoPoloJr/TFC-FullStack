@@ -12,19 +12,32 @@ export default class Generate {
     return this.sortRows(leaderboard);
   }
 
+  public static generateLeaderboardFull(allMatches:Match[], allTeams:Team[]) {
+    const leaderboard = allTeams.map((team) => this.generateRowsFull(allMatches, team));
+    return this.sortRows(leaderboard);
+  }
+
   public static generateRowsHome(allMatches:Match[], { id, teamName }:Team) {
     const teamMatchesHome = allMatches.filter((mat) => mat.homeTeamId === id);
 
-    console.log('GENARATEROWSHOME', teamMatchesHome);
+    // console.log('GENARATEROWSHOME', teamMatchesHome);
 
     return Calculate.teamStatusHome(teamName, teamMatchesHome);
   }
 
   public static generateRowsAway(allMatches:Match[], { id, teamName }:Team) {
     const teamMatchesAway = allMatches.filter((mat) => mat.awayTeamId === id);
-    console.log('GENARATEROWSAWAY', teamMatchesAway);
+    // console.log('GENARATEROWSAWAY', teamMatchesAway);
 
     return Calculate.teamStatusAway(teamName, teamMatchesAway);
+  }
+
+  public static generateRowsFull(allMatches:Match[], { id, teamName }:Team) {
+    const teamMatchesHome = allMatches.filter((mat) => mat.homeTeamId === id);
+    const teamMatchesAway = allMatches.filter((mat) => mat.awayTeamId === id);
+    // console.log('GENARATEROWSFULL', teamMatchesHome);
+
+    return Calculate.teamStatusFull(teamName, teamMatchesHome, teamMatchesAway);
   }
 
   public static sortRows(leaderboard:TeamInfo[]) {

@@ -14,5 +14,9 @@ export default class LeaderboardController {
       const leaderboard = await LeaderboardService.getAwayLeaderboard();
       res.status(200).json(leaderboard);
     }
+    if (type === '/') {
+      const leaderboard = await LeaderboardService.getFullLeaderboard();
+      res.status(200).json(leaderboard);
+    }
   }
 }
