@@ -3,6 +3,16 @@
 ## Descrição
 O Trybe Futebol Clube é um projeto desenvolvido durante o curso da Trybe, que simula um sistema de gerenciamento de times de futebol. O projeto tem como objetivo proporcionar uma experiência prática na construção de uma aplicação web utilizando tecnologias modernas.
 
+## Orientação de instalação:
+1. Clonar repositorio na sua maquina pelo terminal de comando
+    - `git clone git@github.com:marcoPoloJr/TFC-FullStack.git`
+2. Acessar pasta
+    - `cd TFC-FullStack`
+3. Instalar dependencias
+    - `npm install`
+4. Para instalar as dependencias será necessario o Docker composose em sua maquina
+   - `npm run compose:up`
+
 ## Funcionalidades
 - Cadastro de times de futebol
 - Gerenciamento de jogadores (cadastro, edição, exclusão)
@@ -20,6 +30,7 @@ O Trybe Futebol Clube é um projeto desenvolvido durante o curso da Trybe, que s
 - JavaScript
 - RESTful API
 - GitHub
+
 
 ## Contribuição
 Contribuições são bem-vindas! Sinta-se à vontade para abrir um Pull Request com melhorias, correções de bugs ou novas funcionalidades.
