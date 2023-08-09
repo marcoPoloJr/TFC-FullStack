@@ -12,7 +12,16 @@ O Trybe Futebol Clube é um projeto desenvolvido durante o curso da Trybe, que s
     - `npm install`
 4. Para instalar as dependencias será necessario o Docker composose em sua maquina
    - `npm run compose:up`
-
+5. Instalando dependencias Front-End e Back-End
+    - `npm run install:apps`
+6. Rodando Front-End
+   - Ao finalizar a dependencias acesse a pasta app/frontend
+         - `cd/app/frontend`
+     -Após o acesso a pasta respectiva rode o comando
+         - `npm start` (confirme com y a solicitação)
+     -Após a pagina abrir na aba do navegador, para acessar a parte do usuario coloque o seguinte login e senha
+         - Login: admin@admin.com
+           Senha: secret_admin
 ## Funcionalidades
 - Cadastro de times de futebol
 - Gerenciamento de jogadores (cadastro, edição, exclusão)
