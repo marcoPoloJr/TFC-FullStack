@@ -17,11 +17,11 @@ O Trybe Futebol Clube é um projeto desenvolvido durante o curso da Trybe, que s
 6. Rodando Front-End
    - Ao finalizar a dependencias acesse a pasta app/frontend
          - `cd/app/frontend`
-     -Após o acesso a pasta respectiva rode o comando
+     - Após o acesso a pasta respectiva rode o comando
          - `npm start` (confirme com y a solicitação)
-     -Após a pagina abrir na aba do navegador, para acessar a parte do usuario coloque o seguinte login e senha
+     - Após a pagina abrir na aba do navegador, para acessar a parte do usuario coloque o seguinte login e senha
          - Login: admin@admin.com
-           Senha: secret_admin
+         - Senha: secret_admin
 ## Funcionalidades
 - Cadastro de times de futebol
 - Gerenciamento de jogadores (cadastro, edição, exclusão)
